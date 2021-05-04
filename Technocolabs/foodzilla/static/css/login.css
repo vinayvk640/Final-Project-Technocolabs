@@ -1,0 +1,86 @@
+body{
+    margin: 0;
+    padding: 0%;
+    font-family: sans-serif;
+    background-image: image('https://wallpaperaccess.com/full/767277.jpg');
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+#top-a{
+    color:blue;
+    font-size: 32px;
+    letter-spacing: -1px;
+    font-weight: 900;
+    font-family:'raleway',sans-serif;
+    margin-right: 48px;
+    text-shadow: 1px 0px 3px;
+}
+nav{
+    text-align: right;
+    margin-top: -30px;
+}
+.menu-item{
+    margin: 0;
+    margin-right: 24px;
+    padding-bottom: 70px;
+    font-family:'raleway',sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration:none;
+}
+.box{
+    width: 300px;
+    padding: 40px;
+    position: absolute;
+    top: 40%;
+    left:48%;
+    transform: translate(-50%,-50%);
+    background-color: #191919;
+    text-align: center;
+
+}
+.box h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.box input[type="text"],.box input[type="password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    outline: none;
+    border:2px solid #3498db;
+    padding: 14px 10px;
+    width: 200px;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;  
+}
+.box input[type="text"]:hover,.box input[type="password"]:hover{
+    width: 280px;
+    border-color: lime;
+}
+.box input[type="submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    outline: none;
+    border:2px solid lime;
+    padding: 14px 40px;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer; 
+}
+.box input[type="submit"]:hover{
+    background: lime;
+}
+.box h2{
+    color: white;
+}

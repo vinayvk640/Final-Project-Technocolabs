@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+<head>
+<title>LOGIN</title>
+<link href="{% static 'css/form.css' %}" rel="stylesheet" type="text/css">
+</head>
+<body>
+    {% block content %}
+    <img src="https://image.freepik.com/free-vector/tasty-food-chef-logo-mascot-template_190190-133.jpg" width="200px"></a>
+    <div>
+        <form method="POST" action="{% url 'login' %}" class="box ">
+            {% csrf_token %}
+            <div>
+                <h1>LOGIN</h1>
+                <input type="text" placeholder="USERNAME" value="" name="username"></input>
+                <input type="password" placeholder="PASSWORD" value="" name="password"></input>
+                <input type="submit" value="login" name="login"></input>
+            </div>
+        </form>
+    </div>
+    {% for message in messages %}
+        <p id="messages">{{message}}</p>
+    {% endfor %}
+    {% endblock %}
+    </body>
+    </html>
