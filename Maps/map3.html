@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Address</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <h1 class="heading">Red Door Cafe</h1>
+        <div id="map"></div>
+
+        <script>
+            function initMap(){
+            var options={
+              zoom:10,
+              center:{ lat:19.1395612, lng:72.8312193}
+            }
+            var map= new google.maps.Map(document.getElementById("map"),options);
+        
+            var marker= new google.maps.Marker({
+            position:{ lat:19.1395612, lng:72.8312193},
+            map:map
+            });
+          }
+          </script>
+              
+          <script async defer src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBf4YdqnI64ciR6IxofXR8xAVUQryj4pG0&callback=initMap"></script>
+    </body>
+</html>

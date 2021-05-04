@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.heading {
+  color: #000;
+  text-align: center;
+  margin-top: 3rem;
+  text-decoration: underline;
+}
+#map {
+  height: 400px;
+  width: 800px;
+  margin: auto;
+  margin-top: 4rem;
+  border: 2px solid rgba(0, 0, 0, 0.9);
+}
+@media screen and (max-width: 992px) {
+  #map {
+    height: 400px;
+    width: 700px;
+  }
+}
+@media screen and (max-width: 767px) {
+  #map {
+    height: 350px;
+    width: 550px;
+  }
+  .heading {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 550px) {
+  #map {
+    height: 350px;
+    width: 90%;
+  }
+}
