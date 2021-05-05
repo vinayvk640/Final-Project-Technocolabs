@@ -70,7 +70,6 @@ class RegistrationView(View):
         user = User.objects.create_user(username=username,email=email)
         user.set_password(password)
         user.is_active = False
-        print('user successfully created')
         user.save()
 
         return redirect('login')
@@ -85,7 +84,7 @@ class LoginView(View):
             'has_error': False
         }
 
-        user = request.POST.get('username')
+        username = request.POST.get('username')
         password = request.POST.get('password')
         if username == '':
             messages.add_message(
