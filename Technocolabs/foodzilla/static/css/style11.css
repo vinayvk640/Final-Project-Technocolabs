@@ -613,3 +613,8 @@ h2{
     margin: 10px;
     cursor: pointer;
 }
+
+.logout{
+    margin-right: 80px auto;
+    text-align: right;
+}

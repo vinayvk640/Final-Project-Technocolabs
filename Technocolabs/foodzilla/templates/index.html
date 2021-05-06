@@ -8,6 +8,13 @@
         <link rel="stylesheet" href="{% static 'css/style11.css' %}">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700&display=swap">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <div class="logout">
+            <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <!--{{user.username}}-->
+                {{user.username}}<input type="submit" value="Logout" class="btn btn-info btn-xs">
+            </form>
+        </div>
     </head>
 <body>
     {% block content %}
@@ -30,6 +37,7 @@
                     <li><b><a href="#About">About</a></b></li>
                     <li><b><a href="{% url 'register' %}">Accounts</a></b></li>
                 </ul>
+
                 </nav>
                 <a href="cart.html"><img src="{% static 'img/cart.png' %}" width="30px" height="30px"></a>
             </div>   
