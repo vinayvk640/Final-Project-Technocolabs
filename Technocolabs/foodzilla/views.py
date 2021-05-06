@@ -12,11 +12,18 @@ from .models import *
 
 
 # Create your views here.
-#@login_required(login_url='login')
 class HomeViwe(View):
     def get(self, request):
-        """View function for home page of site."""
         return render(request, 'index.html')
+
+class AccountsView(View):
+    def get(self,request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username,password=password)
+        if not user:
+            return redirect('register')
+        return redirect('login')
 
 class RegistrationView(View):
     def get(self, request):
