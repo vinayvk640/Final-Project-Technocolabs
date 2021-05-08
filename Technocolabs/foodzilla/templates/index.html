@@ -15,6 +15,9 @@
                 {{user.username}}<input type="submit" value="Logout" class="btn btn-info btn-xs">
             </form>
         </div>
+        <script type="text/javascript">
+            var user= '{{user}}'
+        </script>
     </head>
 <body>
     {% block content %}
@@ -243,6 +246,6 @@ It’s not our abilities that show who we truly are - it’s our choices. We aim
     {% endblock %}
 </div>
 
-
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 </body>
 </html>
