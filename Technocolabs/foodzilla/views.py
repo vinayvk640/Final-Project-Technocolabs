@@ -27,7 +27,7 @@ class CheckoutView(View):
         data = cartData(request)
         return render(request, 'checkout.html')
 
-    def checkout(request):
+    def post(request):
 	    data = cartData(request)
 	
 	    cartItems = data['cartItems']
