@@ -3,18 +3,81 @@ from django.shortcuts import render,redirect
 #from .forms import CreateUserForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from django.views.generic import View 
 from email_validator import validate_email
+from .utils import cartData
 from django.contrib import messages
 from django.conf import settings
+from django.http import JsonResponse
+import json
 from .models import *
+
+
+
 
 
 # Create your views here.
 class HomeViwe(View):
     def get(self, request):
         return render(request, 'index.html')
+
+class CheckoutView(View):
+    def get(self,request):
+        data = cartData(request)
+        return render(request, 'checkout.html')
+
+    def checkout(request):
+	    data = cartData(request)
+	
+	    cartItems = data['cartItems']
+	    order = data['order']
+	    items = data['items']
+
+	    context = {'items':items, 'order':order, 'cartItems':cartItems}
+	    return render(request, 'checkout.html', context)
+
+class CartView(View):
+    def get(self,request):
+        data = cartData(request)
+        return render(request, 'cart.html')
+
+    def post(self,request):
+        data = cartData(request)
+
+        cartItems = data['cartItems']
+        order = data['order']
+        items = data['items']
+        context ={'items':items, 'order':order, 'cartItems':cartItems}
+        return render(request, 'cart.html', context)
+
+
+
+class UpdateItemView(View):
+    def update_Item(request):
+	    data = json.loads(request.body)
+	    productId = data['productId']
+	    action = data['action']
+	    print('Action:', action)
+	    print('Product:', productId)
+  
+	    customer = request.user.customer
+	    product = Product.objects.get(id=productId)
+	    order, created = Order.objects.get_or_create(customer=customer, complete=False)
+
+	    orderItem, created = OrderItem.objects.get_or_create(order=order, product=product)
+
+	    if action == 'add':
+		    orderItem.quantity = (orderItem.quantity + 1)
+	    elif action == 'remove':
+		    orderItem.quantity = (orderItem.quantity - 1)
+
+	    orderItem.save()
+
+	    if orderItem.quantity <= 0:
+		    orderItem.delete()
+
+	    return JsonResponse('Item was added', safe=False)
 
 class AccountsView(View):
     def get(self,request):
